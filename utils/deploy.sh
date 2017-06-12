@@ -1,16 +1,12 @@
 #!/bin/bash
 
-# Get temporary path
-function get_tmp {
-	echo ".`cat /dev/urandom | env LC_CTYPE=C tr -dc a-z0-9 | head -c 16`"
-}
-
 echo "Running deploy..."
 
 SRC_URL='git@github.com:frontendu/frontendu.github.io'
 NPM_VERSION=$1
-TMP_PATH=`get_tmp`
+TMP_PATH=.tmp
 DIST_PATH=docs
+
 
 if [ -z $NPM_VERSION ]; then
 	NPM_VERSION='patch'
