@@ -38,4 +38,4 @@ git commit -m "Version of site bumped to ${SITE_VERSION}"
 
 git push origin master
 
-rm -rf
+rm -rf $TMP_PATH
