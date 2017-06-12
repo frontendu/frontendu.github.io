@@ -24,6 +24,6 @@ rmdir docs/
 
 git add -A
 
-git commit -m "Bumped to version ${SITE_VERSION} of Github Pages"
+git commit -m "Version of site bumped to ${SITE_VERSION}"
 
 git push origin master
