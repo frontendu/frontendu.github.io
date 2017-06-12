@@ -8,7 +8,7 @@ const isProd = () => {
 };
 
 const getDist = (path) => {
-	return `./dist/${path ? path : ''}`;
+	return `./docs/${path ? path : ''}`;
 }
 
 const toDist = (path) => {
@@ -58,7 +58,7 @@ gulp.task('styles', ['clean'], () => {
 });
 
 gulp.task('vector', ['styles'], () => {
-	return gulp.src('dist/images/**/*.svg')
+	return gulp.src(`${getDist('images')}/**/*.svg`)
 		.pipe($.svgo())
 		.pipe(toDist('images'));
 });
@@ -80,7 +80,7 @@ gulp.task('serve', ['build'], () => {
 	bs.init({
 		open: false,
 		server: {
-			baseDir: './dist'
+			baseDir: getDist()
 		}
 	});
 
