@@ -2,7 +2,7 @@
 
 # Get temporary path
 function get_tmp {
-	echo ".`cat /dev/urandom | env LC_CTYPE=C tr -dc a-zA-Z0-9 | head -c 16`"
+	echo ".`cat /dev/urandom | env LC_CTYPE=C tr -dc a-z0-9 | head -c 16`"
 }
 
 SRC_URL='git@github.com:frontendu/frontendu.github.io'
@@ -34,7 +34,7 @@ git rm -r ./
 cp -r ../$DIST_PATH/* ./
 git add -A
 
-git commit -m "Version of site bumped to ${SITE_VERSION}"
+git commit -m "Version of site bumped to ${SITE_VERSION}" || rm -rf $TMP_PATH
 
 git push origin master
 
