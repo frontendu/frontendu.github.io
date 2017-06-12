@@ -28,7 +28,7 @@ npm run build:prod -- --silent
 echo "Prepare for publishing site..."
 
 git clone $SRC_URL $TMP_PATH -q
-cd $TMP_PATH > /dev/null;
+pushd $TMP_PATH > /dev/null;
 git checkout master -q
 git rm -r ./ -q
 
@@ -44,5 +44,7 @@ git commit -m "Version of site bumped to ${SITE_VERSION}" -q || rm -rf $TMP_PATH
 git push origin master -q
 
 echo "Makeup cleaning up..."
+
+popd > /dev/null
 
 rm -rf $TMP_PATH
