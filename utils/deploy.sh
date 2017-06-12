@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NPM_VERSION=0
+NPM_VERSION=$1
 DIST_PATH=docs
 
 if [ -z $NPM_VERSION ]; then
