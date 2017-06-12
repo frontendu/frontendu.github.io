@@ -21,7 +21,7 @@ const getCleanTaskName = (name) => {
 }
 
 const getCleanTask = (name, files) => {
-	return gulp.task(getCleanTaskName(name), () => {
+	return gulp.task(getCleanTaskName(name), ['clean'], () => {
 		return del(files);
 	})
 }
