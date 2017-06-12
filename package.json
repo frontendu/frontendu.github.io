@@ -13,7 +13,8 @@
 		"gulp-svgo": "^1.1.1",
 		"postcss-copy": "^7.0.0",
 		"postcss-cssnext": "^2.11.0",
-		"postcss-url": "^7.0.0"
+		"postcss-url": "^7.0.0",
+		"run-sequence": "^1.2.2"
 	},
 	"scripts": {
 		"build": "gulp build",
