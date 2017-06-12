@@ -1,21 +1,7 @@
 #!/bin/bash
 
-NPM_VERSION=$1
-DIST_PATH=docs
-
-if [ -z $NPM_VERSION ]; then
-	NPM_VERSION='patch'
-fi
-
-rm -r $DIST_PATH
-
-npm version $NPM_VERSION -m "Version bumped to %s"
-
-git push origin dev
-git push --tags
-
 SITE_VERSION=`node -e "
-	console.log(require('package.json').version)
+	console.log(require('./package.json').version)
 "`
 
 npm run build:prod
