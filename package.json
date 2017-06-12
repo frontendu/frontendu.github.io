@@ -1,0 +1,22 @@
+{
+	"devDependencies": {
+		"browser-sync": "^2.18.12",
+		"cssnano": "^3.10.0",
+		"del": "^3.0.0",
+		"gulp": "^3.9.1",
+		"gulp-concat": "^2.6.1",
+		"gulp-htmlmin": "^3.0.0",
+		"gulp-load-plugins": "^1.5.0",
+		"gulp-postcss": "^7.0.0",
+		"gulp-sourcemaps": "^2.6.0",
+		"gulp-svgo": "^1.1.1",
+		"postcss-copy": "^7.0.0",
+		"postcss-cssnext": "^2.11.0",
+		"postcss-url": "^7.0.0"
+	},
+	"scripts": {
+		"build": "gulp build",
+		"build:prod": "NODE_ENV=production npm run build",
+		"start": "gulp serve"
+	}
+}

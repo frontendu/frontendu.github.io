@@ -1,0 +1,170 @@
+body {
+	margin: 0;
+}
+
+main {
+	text-align: center;
+	font-family: "Open Sans", system-ui;
+}
+
+.title {
+	animation-delay: 0.2s;
+	animation-duration: 0.8s;
+	opacity: 0;
+}
+
+.title__subtitle {
+	font-weight: 100;
+}
+
+.title__marked {
+	color: red;
+}
+
+.animation_show {
+	animation-name: show;
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
+}
+
+.logo {
+	margin: 0 auto;
+	width: 320px;
+	height: 260px;
+	background-image: url('./images/logo.png');
+	background-size: cover;
+}
+
+.logo::before {
+	content: '';
+	display: block;
+	width: 10px;
+	height: 10px;
+	background-color: black;
+	border-radius: 50%;
+	position: absolute;
+	opacity: 0;
+	left: 0;
+	top: 0;
+	animation-delay: 1s;
+	animation-name: drink;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-in-out;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+}
+
+.links {
+	list-style-type: none;
+	margin-bottom: 20px;
+}
+
+.links__link {
+	display: inline-block;
+	padding: 0;
+}
+
+.links__link-image {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	padding: 0;
+	background-size: cover;
+	border-radius: 10px;
+}
+
+.links__link-image {
+	filter: grayscale(1);
+	margin-left: 5px;
+	margin-right: 5px;
+	transition: filter 0.4s;
+}
+
+.links__link-image:hover {
+	filter: grayscale(0);
+	cursor: pointer;
+}
+
+
+.links__link-image_soundcloud {
+	background-image: url('./images/soundcloud.svg');
+}
+
+.links__link-image_twitter {
+	background-image: url('./images/twitter.svg');
+}
+
+.links__link-image_email {
+	background-image: url('./images/email.svg');
+}
+
+@media (min-width: 420px) {
+	.logo {
+		width: 420px;
+		height: 360px;
+		background-image: url('./images/logo@2x.png');
+	}
+
+	.logo::before {
+		width: 12px;
+		height: 12px;
+		animation-name: drink_m;
+	}
+}
+
+.embedded_twitter {
+	margin: 0 auto;
+	max-width: 600px;
+}
+
+@keyframes drink_m {
+	0% {
+		opacity: 1;
+		transform: translateX(262px) translateY(248px) scale(0);
+	}
+
+	50% {
+		transform: translateX(250px) translateY(205px) scale(1);
+	}
+
+	75% {
+		transform: translateX(225px) translateY(197px) scale(1);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(219px) translateY(195px) scale(0);
+	}
+}
+
+@keyframes drink {
+	0% {
+		opacity: 1;
+		transform: translateX(199px) translateY(187px) scale(0);
+	}
+
+	50% {
+		transform: translateX(191px) translateY(156px) scale(1);
+	}
+
+	75% {
+		transform: translateX(170px) translateY(149px) scale(1);
+	}
+
+	100% {
+		transform: translateX(166px) translateY(148px) scale(0);
+		opacity: 1;
+	}
+}
+
+@keyframes show {
+	0% {
+		transform: translateY(-100px);
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
