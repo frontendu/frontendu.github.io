@@ -7,8 +7,6 @@ if [ -z $NPM_VERSION ]; then
 	NPM_VERSION='patch'
 fi
 
-rm -r $DIST_PATH
-
 npm version $NPM_VERSION -m "Version bumped to %s"
 
 git push origin dev
