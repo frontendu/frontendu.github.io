@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 const del  = require('del');
 const bs   = require('browser-sync').create();
+const rs   = require('run-sequence');
 const $    = require('gulp-load-plugins')();
 
 const isProd = () => {
@@ -15,7 +16,22 @@ const toDist = (path) => {
 	return gulp.dest(getDist(path));
 };
 
-gulp.task('styles', ['clean'], () => {
+const getCleanTaskName = (name) => {
+	return `clean:${name}`;
+}
+
+const getCleanTask = (name, files) => {
+	return gulp.task(getCleanTaskName(name), () => {
+		return del(files);
+	})
+}
+
+getCleanTask('styles', [
+	`${getDist()}/*.css`,
+	`${getDist()}/*.css.map`
+]);
+
+gulp.task('styles', [getCleanTaskName('styles')], () => {
 	const copyOptions = [
 		{ url: 'inline', maxSize: 10 }
 	];
@@ -63,7 +79,11 @@ gulp.task('vector', ['styles'], () => {
 		.pipe(toDist('images'));
 });
 
-gulp.task('pages', ['clean'], () => {
+getCleanTask('pages', [
+	`${getDist()}/*.html`
+]);
+
+gulp.task('pages', [getCleanTaskName('pages')], () => {
 	return gulp.src('pages/**/*.html')
 		.pipe($.htmlmin({
 			collapseWhitespace: true
@@ -86,13 +106,19 @@ gulp.task('serve', ['build'], () => {
 
 	gulp
 		.watch(
+			'pages/**/*.html',
+			['pages']
+		);
+
+	gulp
+		.watch(
 			'styles/**/*.css',
 			['styles']
 		);
 
 	gulp
 		.watch([
-			'pages/**/*.html',
+			`${getDist()}/**/*.html`,
 			'public/**/*.*'
 		])
 		.on('change', bs.reload);
@@ -104,13 +130,21 @@ gulp.task('clean', () => {
 	]);
 });
 
-gulp.task('build', [
-	'clean',
+gulp.task('prebuild', [
+	'clean'
+]);
+
+gulp.task('inbuild', [
 	'public',
 	'pages',
 	'styles',
 	'vector'
-]);
+])
+
+gulp.task('build', (cb) => rs([
+	'prebuild',
+	'inbuild'
+], cb));
 
 gulp.task('default', [
 	'build'
