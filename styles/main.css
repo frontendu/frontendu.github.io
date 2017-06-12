@@ -98,6 +98,10 @@ main {
 	background-image: url('./images/email.svg');
 }
 
+.links__link-image_itunes {
+	background-image: url('./images/itunes.svg');
+}
+
 @media (min-width: 420px) {
 	.logo {
 		width: 420px;
