@@ -14,16 +14,12 @@ fi
 
 echo "Incrementing version to ${NPM_VERSION}..."
 
-npm version $NPM_VERSION -m "Version bumped to %s"
+SITE_VERSION=`npm version $NPM_VERSION -m "Version bumped to %s"`
 
 echo "Pushing version and tags..."
 
 git push origin dev -q
 git push --tags -q
-
-SITE_VERSION=`node -e "
-	console.log(require('./package.json').version)
-"`
 
 echo "Builing site..."
 
@@ -39,12 +35,14 @@ git rm -r ./ -q
 echo "Copying new content of site..."
 
 cp -r ../$DIST_PATH/* ./
-git add -A -q
+git add -A
 
 echo "Publishing site..."
 
-git commit -m "Version of site bumped to ${SITE_VERSION}" || rm -rf $TMP_PATH
+git commit -m "Version of site bumped to ${SITE_VERSION}" -q || rm -rf $TMP_PATH
 
 git push origin master -q
+
+echo "Makeup cleaning up..."
 
 rm -rf $TMP_PATH
