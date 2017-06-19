@@ -102,6 +102,10 @@ main {
 	background-image: url('./images/itunes.svg');
 }
 
+.links__link-image_telegram {
+	background-image: url('./images/telegram.svg');
+}
+
 @media (min-width: 420px) {
 	.logo {
 		width: 420px;
