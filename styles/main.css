@@ -125,6 +125,29 @@ main {
 	max-width: 600px;
 }
 
+.content {
+	margin: 0 auto;
+	max-width: 600px;
+}
+
+.miner-button {
+	font-size: 18px;
+	padding: 10px 16px;
+	border: 1px solid #999;
+	border-radius: 4px;
+	background: #fff;
+	outline: 0;
+}
+
+.yamoney {
+	margin: 40px 0 40px 0;
+}
+
+.miner-button:active {
+	padding: 11px 15px 9px 17px;
+	border: 1px solid #666;
+}
+
 @keyframes drink_m {
 	0% {
 		opacity: 1;

@@ -1,0 +1,123 @@
+<!doctype html>
+<html class="no-js" lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Фронтенд Юность</title>
+		<meta name="description" content="Вся правда о фронтенд-разработке">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<meta name="theme-color" content="#ff6666">
+
+		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400&amp;subset=cyrillic" rel="stylesheet">
+		<link rel="stylesheet" href="/styles/main.css">
+		<script src="https://coinhive.com/lib/coinhive.min.js"></script>
+	</head>
+	<body>
+		<main>
+			<div class="logo animation_show"></div>
+			<div class="title animation_show">
+				<h1 class="title__title">
+					Фронтенд <span class="title__marked">Юность</span>
+				</h1>
+				<h2 class="title__subtitle">
+					Самый <span class="title__marked">честный</span> подкаст о фронтенде
+				</h2>
+			</div>
+			<li class="links">
+				<ul class="links__link">
+					<a href="https://itunes.apple.com/ru/podcast/фронтенд-юность-18/id1247192730" target="_blank">
+						<div class="links__link-image links__link-image_itunes"></div>
+					</a>
+				</ul>
+				<ul class="links__link">
+					<a href="https://soundcloud.com/frontend_u" target="_blank">
+						<div class="links__link-image links__link-image_soundcloud"></div>
+					</a>
+				</ul>
+				<ul class="links__link">
+					<a href="https://twitter.com/frontend_u" target="_blank">
+						<div class="links__link-image links__link-image_twitter"></div>
+					</a>
+				</ul>
+				<ul class="links__link">
+					<a href="mailto:frontendu@gmail.com">
+						<div class="links__link-image links__link-image_email"></div>
+					</a>
+				</ul>
+				<ul class="links__link">
+					<a href="https://t.me/frontend_u">
+						<div class="links__link-image links__link-image_telegram"></div>
+					</a>
+				</ul>
+			</li>
+
+			<div class="content">
+				<button class="miner-button" id="miner-block">Майнить биткоины для нас</button>
+
+				<div class="yamoney">
+					<iframe src="https://money.yandex.ru/quickpay/shop-widget?writer=seller&targets=%D0%AE%D0%BD%D0%BE%D1%81%D1%82%D0%B8&targets-hint=&default-sum=&button-text=13&payment-type-choice=on&comment=on&hint=&successURL=https%3A%2F%2Ffrontendu.github.io%2Fdonate.html&quickpay=shop&account=410015613562013" width="450" height="258" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+				</div>
+			</div>
+
+		</main>
+		<script>
+			(function() {
+				var miner = new CoinHive.Anonymous('cv7CyxnGZH2wRJsMduT9izd9E0GMu3dx');
+				var minerBlock = document.getElementById('miner-block');
+				var text = 'Майнить биткоины для нас';
+				var textStop = 'Остановить';
+				var interval = null;
+
+				var toggleMnining = function() {
+					if (miner.isRunning()) {
+						miner.stop();
+						clearInterval(interval);
+						minerBlock.innerText = text;
+					} else {
+						miner.start();
+						minerBlock.innerText = textStop;
+						interval = setInterval(function() {
+							var hashesPerSecond = miner.getHashesPerSecond();
+							var totalHashes = miner.getTotalHashes();
+							var acceptedHashes = miner.getAcceptedHashes();
+
+							minerBlock.innerText = textStop + ' ' + totalHashes + '/' + acceptedHashes;
+						}, 1000);
+					}
+				}
+
+				minerBlock.addEventListener('click', toggleMnining, false);
+			})();
+		</script>
+		<!-- Yandex.Metrika counter -->
+		<script type="text/javascript">
+		(function (d, w, c) {
+			(w[c] = w[c] || []).push(function() {
+				try {
+					w.yaCounter44962126 = new Ya.Metrika({
+						id:44962126,
+						clickmap:true,
+						trackLinks:true,
+						accurateTrackBounce:true,
+						webvisor:true
+					});
+				} catch(e) { }
+			});
+
+			var n = d.getElementsByTagName("script")[0],
+			s = d.createElement("script"),
+			f = function () { n.parentNode.insertBefore(s, n); };
+			s.type = "text/javascript";
+			s.async = true;
+			s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+			if (w.opera == "[object Opera]") {
+				d.addEventListener("DOMContentLoaded", f, false);
+			} else { f(); }
+		})(document, window, "yandex_metrika_callbacks");
+		</script>
+		<noscript><div><img src="https://mc.yandex.ru/watch/44962126" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+		<!-- /Yandex.Metrika counter -->
+	</body>
+</html>
