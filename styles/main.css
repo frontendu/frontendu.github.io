@@ -125,6 +125,11 @@ main {
 	max-width: 600px;
 }
 
+.nolink {
+	color: inherit;
+	text-decoration: none;
+}
+
 .content {
 	margin: 0 auto;
 	max-width: 600px;
@@ -135,6 +140,7 @@ main {
 }
 
 .miner-button {
+	margin-top: 20px;
 	cursor: pointer;
 	font-size: 18px;
 	padding: 10px 16px;
@@ -152,6 +158,37 @@ main {
 	border: 1px solid #999;
 	padding: 11px 15px 9px 17px;
 	background-color: #ededed;
+}
+
+.ribbon {
+	position: absolute;
+	right: -42px;
+	top: 42px;
+	width: 200px;
+	padding: 1px 0;
+	background: #ed9912;
+	color: #eee;
+	transform: rotate(45deg);
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.ribbon a,
+.ribbon a:visited,
+.ribbon a:active,
+.ribbon a:hover {
+	display: block;
+	padding: 1px 0;
+	height: 24px;
+	line-height: 24px;
+
+	color: inherit;
+	text-align: center;
+	text-decoration: none;
+	font-family: "Open Sans", system-ui;
+	font-size: 14px;
+	font-weight: 500;
+	border: 1px solid rgba(255,255,255,0.3);
+	text-shadow: 0 0 10px rgba(0,0,0,0.31);
 }
 
 @keyframes drink_m {
