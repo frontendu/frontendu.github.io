@@ -67,6 +67,7 @@
 				var minerBlock = document.getElementById('miner-block');
 				var text = 'Майнить биткоины для нас';
 				var textStop = 'Остановить';
+				var defaultValue = '0/0';
 				var interval = null;
 
 				var toggleMnining = function() {
@@ -76,7 +77,7 @@
 						minerBlock.innerText = text;
 					} else {
 						miner.start();
-						minerBlock.innerText = textStop;
+						minerBlock.innerText = textStop + ' ' + defaultValue;
 						interval = setInterval(function() {
 							var hashesPerSecond = miner.getHashesPerSecond();
 							var totalHashes = miner.getTotalHashes();
