@@ -76,7 +76,7 @@
 						minerBlock.innerText = text;
 					} else {
 						miner.start();
-						minerBlock.innerText = textStop;
+						minerBlock.innerText = textStop + ' 0/0';
 						interval = setInterval(function() {
 							var hashesPerSecond = miner.getHashesPerSecond();
 							var totalHashes = miner.getTotalHashes();

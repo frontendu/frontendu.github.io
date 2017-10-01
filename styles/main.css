@@ -130,7 +130,12 @@ main {
 	max-width: 600px;
 }
 
+.yamoney {
+	margin: 40px 0 40px 0;
+}
+
 .miner-button {
+	cursor: pointer;
 	font-size: 18px;
 	padding: 10px 16px;
 	border: 1px solid #999;
@@ -139,13 +144,14 @@ main {
 	outline: 0;
 }
 
-.yamoney {
-	margin: 40px 0 40px 0;
+.miner-button:hover {
+	border: 1px solid #666;
 }
 
 .miner-button:active {
+	border: 1px solid #999;
 	padding: 11px 15px 9px 17px;
-	border: 1px solid #666;
+	background-color: #ededed;
 }
 
 @keyframes drink_m {
