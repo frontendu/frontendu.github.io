@@ -92,7 +92,7 @@ gulp.task('pages', [getCleanTaskName('pages')], () => {
 });
 
 gulp.task('public', ['clean'], () => {
-	return gulp.src('public/**/*.*')
+	return gulp.src('public/**/*')
 		.pipe(toDist())
 });
 
