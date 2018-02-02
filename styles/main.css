@@ -37,14 +37,6 @@ main {
 	background-size: cover;
 }
 
-.logo__head_ny {
-	position: absolute;
-	width: 170px;
-	z-index: 2;
-	left: 0;
-	top: 10px;
-}
-
 .logo::before {
 	content: '';
 	display: block;
@@ -121,11 +113,6 @@ main {
 		width: 420px;
 		height: 360px;
 		background-image: url('./images/logo@2x.png');
-	}
-
-	.logo__head_ny {
-		width: 220px;
-		top: 20px;
 	}
 
 	.logo::before {
