@@ -17,8 +17,9 @@ main {
 
 .ember {
 	color: white;
-	margin-top: 20px;
-	margin-bottom: 20px;
+	position: relative;
+	margin-top: 60px;
+	margin-bottom: 50px;
 	font-size: 18px;
 	font-weight: 600;
 	text-align: left;
@@ -29,6 +30,83 @@ main {
 		display: inline-block;
 		border-radius: 10px;
 		font-size: 24px;
+	}
+}
+
+.dan {
+	transition: right 0.5s, left 0.5s, bottom 0.5s, top 0.5s;
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	background-size: cover;
+	right: 0px;
+	left: 0px;
+	z-index: -1;
+	top: 0;
+	background-image: url('./dan.png');
+
+	&&_position {
+		&_right-bottom {
+			right: -70px;
+		}
+
+		&_down {
+			right: 50%;
+			bottom: -70px;
+		}
+
+		&_up {
+			top: -70px;
+		}
+
+		&_right {
+			right: -70px;
+		}
+
+		&_left {
+			left: -70px;
+		}
+
+		&_left-bottom {
+			left: -70px;
+		}
+	}
+
+	&&_rotate_down {
+		transform: rotate(180deg);
+		right: 33%;
+		left: auto;
+	}
+
+	&&_rotate_up {
+		transform: rotate(0deg);
+		right: 33%;
+		left: auto;
+		bottom: auto;
+	}
+
+	&&_rotate_right-bottom {
+		transform: rotate(90deg);
+		bottom: 0px;
+		top: auto;
+		left: auto;
+	}
+
+	&&_rotate_right {
+		transform: rotate(90deg);
+		left: auto;
+	}
+
+	&&_rotate_left {
+		transform: rotate(-90deg);
+		right: auto;
+	}
+
+	&&_rotate_left-bottom {
+		transform: rotate(-90deg);
+		bottom: 0px;
+		top: auto;
+		right: auto;
 	}
 }
 

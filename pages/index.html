@@ -21,6 +21,7 @@
 			<div class="ember">
 				<p>$ npm install -g ember-cli</p>
 				<p>$ ember new ember-quickstart</p>
+				<div class="dan"></div>
 			</div>
 			<li class="links">
 				<ul class="links__link">
@@ -85,6 +86,67 @@
 				d.addEventListener("DOMContentLoaded", f, false);
 			} else { f(); }
 		})(document, window, "yandex_metrika_callbacks");
+		</script>
+		<!-- Jokes -->
+		<script>
+			const dan = document.querySelector('.dan');
+
+			let positions = [];
+
+
+			if (window.matchMedia("(min-width: 420px)").matches) {
+				positions = [
+					'right',
+					'left',
+					'right-bottom',
+					'left-bottom',
+					'down',
+					'up'
+				];
+			} else {
+				positions = [
+					'down',
+					'up'
+				];
+			}
+
+			let appearing = false;
+			let oldPosition = null;
+
+			const getPseudoRandomPosition = () => {
+				return positions[Math.floor(positions.length * Math.random())];
+			};
+
+			const showDan = () => {
+				if (appearing) {
+					return;
+				}
+
+				const position = getPseudoRandomPosition();
+
+				dan.classList.remove(`dan_rotate_${oldPosition}`);
+				dan.classList.add(`dan_rotate_${position}`);
+
+				setTimeout(() => {
+					appearing = true;
+
+					dan.classList.add(`dan_position_${position}`);
+
+					oldPosition = position;
+
+					setTimeout(() => {
+						appearing = false;
+						dan.classList.remove(`dan_position_${position}`);
+					}, 2000);
+				}, (5000 * Math.random()) + 3000)
+			}
+
+
+			setInterval(() => {
+				showDan();
+			}, 10000);
+
+			showDan();
 		</script>
 		<noscript><div><img src="https://mc.yandex.ru/watch/44962126" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 		<!-- /Yandex.Metrika counter -->
