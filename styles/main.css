@@ -15,6 +15,21 @@ main {
 	opacity: 0;
 }
 
+.ember {
+	color: white;
+	margin-top: 20px;
+	font-size: 24px;
+	font-weight: 600;
+	text-align: left;
+	background-color: #E04E39;
+	padding: 1em;
+
+	@media (min-width: 420px) {
+		display: inline-block;
+		border-radius: 10px;
+	}
+}
+
 .title__subtitle {
 	font-weight: 100;
 }
@@ -31,30 +46,13 @@ main {
 
 .logo {
 	margin: 0 auto;
-	width: 320px;
+	width: 260px;
 	height: 260px;
-	background-image: url('./images/logo.png');
+	margin-top: 20px;
+	background-image: url('./ember.gif');
 	background-size: cover;
 }
 
-.logo::before {
-	content: '';
-	display: block;
-	width: 10px;
-	height: 10px;
-	background-color: black;
-	border-radius: 50%;
-	position: absolute;
-	opacity: 0;
-	left: 0;
-	top: 0;
-	animation-delay: 1s;
-	animation-name: drink;
-	animation-fill-mode: forwards;
-	animation-timing-function: ease-in-out;
-	animation-duration: 2s;
-	animation-iteration-count: infinite;
-}
 
 .links {
 	list-style-type: none;
@@ -110,15 +108,10 @@ main {
 
 @media (min-width: 420px) {
 	.logo {
-		width: 420px;
+		margin-top: 40px;
+		width: 360px;
 		height: 360px;
-		background-image: url('./images/logo@2x.png');
-	}
-
-	.logo::before {
-		width: 12px;
-		height: 12px;
-		animation-name: drink_m;
+		background-image: url('./ember.gif');
 	}
 }
 
@@ -191,46 +184,6 @@ main {
 	font-weight: 500;
 	border: 1px solid rgba(255,255,255,0.3);
 	text-shadow: 0 0 10px rgba(0,0,0,0.31);
-}
-
-@keyframes drink_m {
-	0% {
-		opacity: 1;
-		transform: translateX(262px) translateY(248px) scale(0);
-	}
-
-	50% {
-		transform: translateX(250px) translateY(205px) scale(1);
-	}
-
-	75% {
-		transform: translateX(225px) translateY(197px) scale(1);
-	}
-
-	100% {
-		opacity: 1;
-		transform: translateX(219px) translateY(195px) scale(0);
-	}
-}
-
-@keyframes drink {
-	0% {
-		opacity: 1;
-		transform: translateX(199px) translateY(187px) scale(0);
-	}
-
-	50% {
-		transform: translateX(191px) translateY(156px) scale(1);
-	}
-
-	75% {
-		transform: translateX(170px) translateY(149px) scale(1);
-	}
-
-	100% {
-		transform: translateX(166px) translateY(148px) scale(0);
-		opacity: 1;
-	}
 }
 
 @keyframes show {
