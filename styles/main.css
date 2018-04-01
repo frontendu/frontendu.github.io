@@ -18,7 +18,8 @@ main {
 .ember {
 	color: white;
 	margin-top: 20px;
-	font-size: 24px;
+	margin-bottom: 20px;
+	font-size: 18px;
 	font-weight: 600;
 	text-align: left;
 	background-color: #E04E39;
@@ -27,6 +28,7 @@ main {
 	@media (min-width: 420px) {
 		display: inline-block;
 		border-radius: 10px;
+		font-size: 24px;
 	}
 }
 
