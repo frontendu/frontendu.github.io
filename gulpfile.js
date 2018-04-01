@@ -1,7 +1,6 @@
 const gulp = require('gulp');
-const del  = require('del');
+const del  = require('rimraf');
 const bs   = require('browser-sync').create();
-const rs   = require('run-sequence');
 const $    = require('gulp-load-plugins')();
 
 const isProd = () => {
@@ -20,18 +19,19 @@ const getCleanTaskName = (name) => {
 	return `clean:${name}`;
 }
 
+gulp.task('clean', (cb) => {
+	del(getDist(), cb);
+});
+
 const getCleanTask = (name, files) => {
-	return gulp.task(getCleanTaskName(name), ['clean'], () => {
-		return del(files);
+	return gulp.task(getCleanTaskName(name), (cb) => {
+		del(files, cb);
 	})
 }
 
-getCleanTask('styles', [
-	`${getDist()}/*.css`,
-	`${getDist()}/*.css.map`
-]);
+getCleanTask('styles', `${getDist()}/*.css*`);
 
-gulp.task('styles', [getCleanTaskName('styles')], () => {
+gulp.task('styles', gulp.series(getCleanTaskName('styles'), () => {
 	const copyOptions = [
 		{ url: 'inline', maxSize: 10 }
 	];
@@ -71,32 +71,48 @@ gulp.task('styles', [getCleanTaskName('styles')], () => {
 	return stylesPipe
 		.pipe(toDist())
 		.pipe(bs.stream());
-});
+}));
 
-gulp.task('vector', ['styles'], () => {
+gulp.task('vector', () => {
 	return gulp.src(`${getDist('images')}/**/*.svg`)
 		.pipe($.svgo())
 		.pipe(toDist('images'));
 });
 
-getCleanTask('pages', [
-	`${getDist()}/*.html`
-]);
+getCleanTask('pages', `${getDist()}/*.html`);
 
-gulp.task('pages', [getCleanTaskName('pages')], () => {
+gulp.task('pages', gulp.series(getCleanTaskName('pages'), () => {
 	return gulp.src('pages/**/*.html')
 		.pipe($.htmlmin({
 			collapseWhitespace: true
 		}))
 		.pipe(toDist());
-});
+}));
 
-gulp.task('public', ['clean'], () => {
+gulp.task('public', () => {
 	return gulp.src('public/**/*')
 		.pipe(toDist())
 });
 
-gulp.task('serve', ['build'], () => {
+gulp.task('prebuild', gulp.series('clean'));
+
+gulp.task('inbuild', gulp.series(
+	'public',
+	'pages',
+	'styles',
+	'vector'
+));
+
+gulp.task('build', gulp.series(
+	'prebuild',
+	'inbuild'
+));
+
+gulp.task('default', gulp.series(
+	'build'
+));
+
+gulp.task('serve', gulp.series('build', () => {
 	bs.init({
 		open: false,
 		server: {
@@ -107,13 +123,13 @@ gulp.task('serve', ['build'], () => {
 	gulp
 		.watch(
 			'pages/**/*.html',
-			['pages']
+			gulp.series('pages')
 		);
 
 	gulp
 		.watch(
 			'styles/**/*.css',
-			['styles']
+			gulp.series('styles')
 		);
 
 	gulp
@@ -122,30 +138,4 @@ gulp.task('serve', ['build'], () => {
 			'public/**/*.*'
 		])
 		.on('change', bs.reload);
-});
-
-gulp.task('clean', () => {
-	return del([
-		getDist()
-	]);
-});
-
-gulp.task('prebuild', [
-	'clean'
-]);
-
-gulp.task('inbuild', [
-	'public',
-	'pages',
-	'styles',
-	'vector'
-])
-
-gulp.task('build', (cb) => rs([
-	'prebuild',
-	'inbuild'
-], cb));
-
-gulp.task('default', [
-	'build'
-]);
+}));
