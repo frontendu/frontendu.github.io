@@ -1,5 +1,5 @@
 {
-  "version": "0.1.29",
+  "version": "0.1.30",
   "devDependencies": {
     "browser-sync": "^2.18.12",
     "cssnano": "^3.10.0",
