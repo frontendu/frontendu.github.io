@@ -11,7 +11,6 @@
 		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400&amp;subset=cyrillic" rel="stylesheet">
 		<link rel="stylesheet" href="index.css">
-		<script src="https://coinhive.com/lib/coinhive.min.js"></script>
 	</head>
 	<body>
 		<main>
@@ -26,44 +25,11 @@
 			</div>
 
 			<div class="content">
-				<button class="miner-button" id="miner-block">Майнить криптовалюту для нас</button>
-
 				<div class="yamoney">
 					<iframe src="https://money.yandex.ru/quickpay/shop-widget?writer=seller&targets=%D0%AE%D0%BD%D0%BE%D1%81%D1%82%D0%B8&targets-hint=&default-sum=&button-text=13&payment-type-choice=on&comment=on&hint=&successURL=https%3A%2F%2Ffrontendu.github.io%2Fdonate.html&quickpay=shop&account=410015613562013" width="450" height="258" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
 				</div>
 			</div>
-
 		</main>
-		<script>
-			(function() {
-				var miner = new CoinHive.Anonymous('cv7CyxnGZH2wRJsMduT9izd9E0GMu3dx');
-				var minerBlock = document.getElementById('miner-block');
-				var text = 'Майнить биткоины для нас';
-				var textStop = 'Остановить';
-				var defaultValue = '0/0';
-				var interval = null;
-
-				var toggleMnining = function() {
-					if (miner.isRunning()) {
-						miner.stop();
-						clearInterval(interval);
-						minerBlock.innerText = text;
-					} else {
-						miner.start();
-						minerBlock.innerText = textStop + ' ' + defaultValue;
-						interval = setInterval(function() {
-							var hashesPerSecond = miner.getHashesPerSecond();
-							var totalHashes = miner.getTotalHashes();
-							var acceptedHashes = miner.getAcceptedHashes();
-
-							minerBlock.innerText = textStop + ' ' + totalHashes + '/' + acceptedHashes;
-						}, 1000);
-					}
-				}
-
-				minerBlock.addEventListener('click', toggleMnining, false);
-			})();
-		</script>
 		<!-- Yandex.Metrika counter -->
 		<script type="text/javascript">
 		(function (d, w, c) {
