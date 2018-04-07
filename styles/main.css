@@ -15,101 +15,6 @@ main {
 	opacity: 0;
 }
 
-.ember {
-	color: white;
-	position: relative;
-	margin-top: 60px;
-	margin-bottom: 50px;
-	font-size: 18px;
-	font-weight: 600;
-	text-align: left;
-	background-color: #E04E39;
-	padding: 1em;
-
-	@media (min-width: 420px) {
-		display: inline-block;
-		border-radius: 10px;
-		font-size: 24px;
-	}
-}
-
-.dan {
-	transition: right 0.5s, left 0.5s, bottom 0.5s, top 0.5s;
-	width: 100px;
-	height: 100px;
-	position: absolute;
-	background-size: cover;
-	right: 0px;
-	left: 0px;
-	z-index: -1;
-	top: 0;
-	background-image: url('./dan.png');
-
-	&&_position {
-		&_right-bottom {
-			right: -70px;
-		}
-
-		&_down {
-			right: 50%;
-			bottom: -70px;
-		}
-
-		&_up {
-			top: -70px;
-		}
-
-		&_right {
-			right: -70px;
-		}
-
-		&_left {
-			left: -70px;
-		}
-
-		&_left-bottom {
-			left: -70px;
-		}
-	}
-
-	&&_rotate_down {
-		transform: rotate(180deg);
-		right: 33%;
-		left: auto;
-	}
-
-	&&_rotate_up {
-		transform: rotate(0deg);
-		right: 33%;
-		left: auto;
-		bottom: auto;
-	}
-
-	&&_rotate_right-bottom {
-		transform: rotate(90deg);
-		bottom: 0px;
-		top: auto;
-		left: auto;
-	}
-
-	&&_rotate_right {
-		transform: rotate(90deg);
-		left: auto;
-	}
-
-	&&_rotate_left {
-		transform: rotate(-90deg);
-		right: auto;
-	}
-
-	&&_rotate_left-bottom {
-		transform: rotate(-90deg);
-		bottom: 0px;
-		top: auto;
-		right: auto;
-	}
-}
-
 .title__subtitle {
 	font-weight: 100;
 }
@@ -126,13 +31,30 @@ main {
 
 .logo {
 	margin: 0 auto;
-	width: 260px;
+	width: 320px;
 	height: 260px;
-	margin-top: 20px;
-	background-image: url('./ember.gif');
+	background-image: url('./images/logo.png');
 	background-size: cover;
 }
 
+.logo::before {
+	content: '';
+	display: block;
+	width: 10px;
+	height: 10px;
+	background-color: black;
+	border-radius: 50%;
+	position: absolute;
+	opacity: 0;
+	left: 0;
+	top: 0;
+	animation-delay: 1s;
+	animation-name: drink;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-in-out;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+}
 
 .links {
 	list-style-type: none;
@@ -188,10 +110,15 @@ main {
 
 @media (min-width: 420px) {
 	.logo {
-		margin-top: 40px;
-		width: 360px;
+		width: 420px;
 		height: 360px;
-		background-image: url('./ember.gif');
+		background-image: url('./images/logo@2x.png');
+	}
+
+	.logo::before {
+		width: 12px;
+		height: 12px;
+		animation-name: drink_m;
 	}
 }
 
@@ -264,6 +191,46 @@ main {
 	font-weight: 500;
 	border: 1px solid rgba(255,255,255,0.3);
 	text-shadow: 0 0 10px rgba(0,0,0,0.31);
+}
+
+@keyframes drink_m {
+	0% {
+		opacity: 1;
+		transform: translateX(262px) translateY(248px) scale(0);
+	}
+
+	50% {
+		transform: translateX(250px) translateY(205px) scale(1);
+	}
+
+	75% {
+		transform: translateX(225px) translateY(197px) scale(1);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(219px) translateY(195px) scale(0);
+	}
+}
+
+@keyframes drink {
+	0% {
+		opacity: 1;
+		transform: translateX(199px) translateY(187px) scale(0);
+	}
+
+	50% {
+		transform: translateX(191px) translateY(156px) scale(1);
+	}
+
+	75% {
+		transform: translateX(170px) translateY(149px) scale(1);
+	}
+
+	100% {
+		transform: translateX(166px) translateY(148px) scale(0);
+		opacity: 1;
+	}
 }
 
 @keyframes show {
