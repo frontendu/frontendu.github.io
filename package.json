@@ -1,7 +1,7 @@
 {
   "version": "0.1.35",
   "devDependencies": {
-    "browser-sync": "^2.18.12",
+    "browser-sync": "^2.24.4",
     "cssnano": "^3.10.0",
     "gulp": "^4.0.0",
     "gulp-concat": "^2.6.1",
