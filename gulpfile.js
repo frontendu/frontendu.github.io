@@ -1,7 +1,9 @@
-const gulp = require('gulp');
-const del  = require('rimraf');
-const bs   = require('browser-sync').create();
-const $    = require('gulp-load-plugins')();
+const gulp 	= require('gulp');
+const babel	= require('gulp-babel');
+const minify = require('gulp-minify');
+const del  	= require('rimraf');
+const bs   	= require('browser-sync').create();
+const $    	= require('gulp-load-plugins')();
 
 const isProd = () => {
 	return process.env.NODE_ENV === 'production';
@@ -94,12 +96,24 @@ gulp.task('public', () => {
 		.pipe(toDist())
 });
 
+gulp.task('js', () => 
+	gulp.src('js/**/*.js')
+		.pipe(babel({
+				presets: ['env']
+		}))
+		.pipe(minify({
+			noSource: true
+		}))
+		.pipe(toDist())
+);
+
 gulp.task('prebuild', gulp.series('clean'));
 
 gulp.task('inbuild', gulp.series(
 	'public',
 	'pages',
 	'styles',
+	'js',
 	'vector'
 ));
 
@@ -131,6 +145,12 @@ gulp.task('serve', gulp.series('build', () => {
 			'styles/**/*.css',
 			gulp.series('styles')
 		);
+
+	gulp
+		.watch(
+			'js/**/*.js',
+			gulp.series('js')
+		);	
 
 	gulp
 		.watch([
