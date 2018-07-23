@@ -39,9 +39,11 @@ const mainJs = () => {
   };
 
   document.addEventListener("DOMContentLoaded", () => {
-    const fuckingWordDOM = document.querySelector(".fucking_word");
+    const fuckingWordDOM = document.querySelectorAll(".fucking-word");
     setInterval(() => {
-      fuckingWordDOM.textContent = getFuckingWord(fuckingWordDOM.textContent);
+      for (let elemDOM of fuckingWordDOM) {
+        elemDOM.textContent = getFuckingWord(elemDOM.textContent);
+      }
     }, 2000);
   });
 };

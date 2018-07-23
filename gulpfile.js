@@ -1,9 +1,9 @@
-const gulp 	= require('gulp');
-const babel	= require('gulp-babel');
-const minify = require('gulp-minify');
-const del  	= require('rimraf');
-const bs   	= require('browser-sync').create();
-const $    	= require('gulp-load-plugins')();
+const gulp = require("gulp");
+const babel = require("gulp-babel");
+const minify = require("gulp-minify");
+const del = require("rimraf");
+const bs = require("browser-sync").create();
+const $ = require("gulp-load-plugins")();
 
 const isProd = () => {
 	return process.env.NODE_ENV === 'production';
