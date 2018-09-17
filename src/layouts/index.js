@@ -35,6 +35,7 @@ const Header = styled.header`
 
 const Logo = styled.img`
 	width: 160px;
+	min-height: 160px;
 	box-sizing: border-box;
 	padding: 20px;
 `;
