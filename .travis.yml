@@ -11,4 +11,4 @@ deploy:
   local-dir: public
   fqdn: youknow.st
   on:
-    branch: master
+    branch: dev
