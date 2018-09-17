@@ -15,9 +15,11 @@ const LogoWrapper = styled.div`
 	position: relative;
 	margin: 0 auto;
 	width: 320px;
+	min-height: 320px;
 
 	@media (min-width: 768px) {
 		width: 360px;
+		min-height: 360px;
 	}
 `;
 
