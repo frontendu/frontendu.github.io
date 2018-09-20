@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Link from 'gatsby-link';
 
 import SocialLinks from './patrials/social-links';
+import {postponeLoadFont} from '../lib/font-loading';
 
 import './index.css';
 
@@ -49,7 +50,6 @@ const StyledNavLink = styled(Link)`
 	padding: 20px;
 	font-size: 24px;
 	color: black;
-	font-family: 'Fira Sans Bold';
 `;
 
 const StyledSocialLinks = styled(SocialLinks)`
@@ -58,32 +58,37 @@ const StyledSocialLinks = styled(SocialLinks)`
 	}
 `;
 
-const Layout = ({
-	children,
-	data
-}) => (
-	<Content>
-		<Helmet>
-			<title>{data.site.siteMetadata.title}</title>
-			<meta name="description" content="Подкаст о фронтенде" />
-			<meta name="keywords" content="Фронтенд, подкаст, React, JavaScript, CSS" />
-			<meta name="viewport" content="width=device-width, initial-scale=1" />
-			<meta name="theme-color" content="#ff6666" />
-			<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
-			<link rel="shortcut icon" href="/favicon.ico" />
-		</Helmet>
-		<Header>
-			<StyledLink to="/">
-				<Logo src={logo} />
-			</StyledLink>
-			<StyledNavLink to="/">
-				На главную
-			</StyledNavLink>
-			<StyledSocialLinks />
-		</Header>
-		{children()}
-	</Content>
-);
+class Layout extends React.Component {
+	componentDidMount() {
+		postponeLoadFont();
+	}
+
+	render() {
+		return (
+			<Content>
+				<Helmet>
+					<title>{this.props.data.site.siteMetadata.title}</title>
+					<meta name="description" content="Подкаст о фронтенде" />
+					<meta name="keywords" content="Фронтенд, подкаст, React, JavaScript, CSS" />
+					<meta name="viewport" content="width=device-width, initial-scale=1" />
+					<meta name="theme-color" content="#ff6666" />
+					<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+					<link rel="shortcut icon" href="/favicon.ico" />
+				</Helmet>
+				<Header>
+					<StyledLink to="/">
+						<Logo src={logo} />
+					</StyledLink>
+					<StyledNavLink to="/">
+						На главную
+					</StyledNavLink>
+					<StyledSocialLinks />
+				</Header>
+				{this.props.children()}
+			</Content>
+		)
+	}
+}
 
 export default Layout;
 

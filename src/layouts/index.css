@@ -1,21 +1,19 @@
 @font-face {
-	font-family: "Fira Sans Bold";
-	font-weight: bold;
-	src: 
-		url(../assets/FiraSans-Bold.woff2),
-		url(../assets/FiraSans-Bold.woff);
-}
-
-@font-face {
-	font-family: "Fira Sans Light";
-	font-weight: 300;
+	font-family: "Fira Sans";
+	font-weight: 100, 300;
 	src:
-		url(../assets/FiraSans-Light.woff2),
-		url(../assets/FiraSans-Light.woff);
+		url(../assets/FiraSans-Regular.woff2),
+		url(../assets/FiraSans-Regular.woff);
 }
 
 body {
 	margin: 0;
+	font-family: Arial, sans-serif;
+}
+
+body.font_loaded_yes {
+	margin: 0;
+	font-family: 'Fira Sans', Arial, sans-serif;
 }
 
 html,

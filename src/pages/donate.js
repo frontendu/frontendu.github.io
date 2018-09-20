@@ -28,7 +28,7 @@ const Content = styled.div`
 `;
 
 const Motivation = styled.p`
-	font-family: 'Fira Sans Light';
+	font-weight: 100;
 	line-height: 1.5;
 	font-size: 20px;
 	text-align: center;
@@ -40,7 +40,6 @@ const Motivation = styled.p`
 `;
 
 const HighlightText = styled.span`
-	font-family: 'Fira Sans Bold';
 	background-color: #000000;
 	color: #ffffff;
 	padding: 5px;
@@ -91,7 +90,7 @@ const StyledDonateForm = styled.div`
 `;
 
 const StyledInput = styled.input`
-	font-family: 'Fira Sans Light';
+	font-weight: 100;
 	font-size: 32px;
 	box-sizing: border-box;
 	background-color: transparent;
@@ -110,7 +109,7 @@ const StyledInput = styled.input`
 const StyledTextArea = styled.textarea`
 	background-color: transparent;
 	font-size: 24px;
-	font-family: 'Fira Sans Light';
+	font-weight: 100;
 	border: none;
 	border-bottom: 1px solid black;
 	box-sizing: border-box;
@@ -128,7 +127,6 @@ const FormRow = styled.div`
 `;
 
 const FormLabel = styled.div`
-	font-family: 'Fira Sans Bold';
 	font-size: 24px;
 	padding: 5px;
 	box-sizing: border-box;
@@ -191,7 +189,7 @@ const StyledSubmit = styled.button`
 	padding: 15px 25px;
 	background-color: #ff0000;
 	border: none;
-	font-family: Fira Sans Bold;
+	font-weight: 600;
 	font-size: 32px;
 	color: white;
 	width: 100%;
@@ -210,7 +208,7 @@ const Patreon = styled.a`
 	display: inline-block;
 	width: 100%;
 	font-size: 18px;
-	font-family: 'Fira Sans Light';
+	font-weight: 100;
 	margin-bottom: 40px;
 	text-align: center;
 

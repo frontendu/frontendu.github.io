@@ -17,7 +17,6 @@ const Content = styled.div`
 `;
 
 const HighlightText = styled.span`
-	font-family: 'Fira Sans Bold';
 	padding: 5px;
 	font-size: 54px;
 	background-color: #000000;
@@ -25,7 +24,7 @@ const HighlightText = styled.span`
 `;
 
 const DescriptionText = styled.p`
-	font-family: 'Fira Sans Light';
+	font-weight: 100;
 	font-size: 32px;
 `;
 

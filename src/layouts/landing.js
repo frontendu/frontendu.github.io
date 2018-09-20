@@ -5,6 +5,7 @@ import Link from 'gatsby-link';
 
 import {Timeline} from 'react-twitter-widgets';
 import SocialLinks from './patrials/social-links';
+import {postponeLoadFont} from '../lib/font-loading';
 
 import './index.css';
 
@@ -90,8 +91,8 @@ const Hero = styled.div`
 `;
 
 const TeamName = styled.div`
-	font-family: 'Fira Sans Bold';
 	font-size: 24px;
+	font-weight: 600;
 	line-height: 1.5;
 	background-color: #000;
 	color: #fff;
@@ -115,7 +116,7 @@ const StyledSocialLinks = styled(SocialLinks)`
 `;
 
 const Greating = styled.div`
-	font-family: 'Fira Sans Light';
+	font-weight: 100;
 	font-size: 24px;
 	max-width: 420px;
 	line-height: 1.5;
@@ -128,7 +129,6 @@ const Greating = styled.div`
 `;
 
 const HighlightText = styled.span`
-	font-family: 'Fira Sans Bold';
 	background-color: #ff0000;
 	color: #ffffff;
 	padding: 5px;
@@ -170,50 +170,54 @@ const StyledTimeline = styled.div`
 	margin: 0 auto;
 `;
 
+class Layout extends React.Component {
+	componentDidMount() {
+		postponeLoadFont();
+	}
 
-const Layout = ({
-	data
-}) => (
-	<Content>
-		<Helmet>
-			<title>{data.site.siteMetadata.title}</title>
-			<meta name="description" content="Подкаст о фронтенде" />
-			<meta name="keywords" content="Фронтенд, подкаст, React, JavaScript, CSS" />
-			<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"></meta>
-			<meta name="theme-color" content="#ff6666" />
-			<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
-			<link rel="shortcut icon" href="/favicon.ico" />
-			<script async src="//platform.twitter.com/widgets.js"></script>
-		</Helmet>
-		<Hero>
-			<LogoWrapper>
-				<StyledLogoLink to="/">
-					<Logo src={logo} />
-					<CoctailBall />
-				</StyledLogoLink>
-			</LogoWrapper>
-			<TeamName>Фронтенд Юность</TeamName>
-			<StyledSocialLinks />
-			<Greating>
-				Самый <HighlightText>честный</HighlightText> подкаст&nbsp;о&nbsp;фронтенде!
-			</Greating>
-		</Hero>
-		<StyledDonateLink tabIndex="1" to="/donate">
-			<Coin />
-		</StyledDonateLink>
-		<StyledTimeline>
-			<Timeline
-				dataSource={{
-					sourceType: 'profile',
-					screenName: 'frontend_u'
-				}}
-				options={{
-					username: 'frontend_u'
-				}}
-			/>
-		</StyledTimeline>
-	</Content>
-);
+	render() {
+		return (
+			<Content>
+				<Helmet>
+					<title>{this.props.data.site.siteMetadata.title}</title>
+					<meta name="description" content="Подкаст о фронтенде" />
+					<meta name="keywords" content="Фронтенд, подкаст, React, JavaScript, CSS" />
+					<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"></meta>
+					<meta name="theme-color" content="#ff6666" />
+					<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+					<link rel="shortcut icon" href="/favicon.ico" />
+				</Helmet>
+				<Hero>
+					<LogoWrapper>
+						<StyledLogoLink to="/">
+							<Logo src={logo} />
+							<CoctailBall />
+						</StyledLogoLink>
+					</LogoWrapper>
+					<TeamName>Фронтенд Юность</TeamName>
+					<StyledSocialLinks />
+					<Greating>
+						Самый <HighlightText>честный</HighlightText> подкаст&nbsp;о&nbsp;фронтенде!
+					</Greating>
+				</Hero>
+				<StyledDonateLink tabIndex="1" to="/donate">
+					<Coin />
+				</StyledDonateLink>
+				<StyledTimeline>
+					<Timeline
+						dataSource={{
+							sourceType: 'profile',
+							screenName: 'frontend_u'
+						}}
+						options={{
+							username: 'frontend_u'
+						}}
+					/>
+				</StyledTimeline>
+			</Content>
+		);
+	}
+}
 
 export default Layout;
 
