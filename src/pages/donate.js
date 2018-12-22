@@ -198,6 +198,11 @@ const StyledSubmit = styled.button`
 	@media (min-width: 768px) {
 		width: auto;
 	}
+
+	&:disabled {
+		cursor: default;
+		opacity: 0.2;
+	}
 `;
 
 const StyledPaymentTypes = styled.div`
@@ -230,14 +235,13 @@ class Donate extends React.Component {
 		}
 	}
 
+	submitDisabled() {
+		const {sum} = this.state;
+		return isNaN(sum) || sum < 100 || sum > 15000;
+	}
+
 	onSumChange(e) {
-		const sum = +e.target.value;
-
-		if (isNaN(sum) || sum <= 0) {
-			return;
-		}
-
-		this.setState({sum});
+		this.setState({sum: e.target.value});
 	}
 
 	onCommentChange(e) {
@@ -262,7 +266,6 @@ class Donate extends React.Component {
 			sum,
 			comment
 		} = this.state;
-
 		return (
 			<StyledDonateForm>
 				<form method="POST" action="https://money.yandex.ru/quickpay/confirm.xml">
@@ -273,7 +276,6 @@ class Donate extends React.Component {
 							type="number"
 							min="100"
 							max="15000"
-							data-type="number"
 							value={sum}
 							onChange={(e) => this.onSumChange(e)}
 						/>
@@ -299,6 +301,7 @@ class Donate extends React.Component {
 					<FormRow>
 						<FormLabel />
 						<StyledSubmit
+							disabled={this.submitDisabled()}
 							onClick={() => onDonate({
 								paymentType
 							})}
