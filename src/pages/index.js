@@ -43,38 +43,8 @@ const ChristmasBall = styled.div`
 	height: 100%;
 	position: absolute;
 	background-size: contain;
-	z-index: 1000;
+	z-index: 1;
 	opacity: 0.8;
-`;
-
-const AnimationBall = keyframes`
-	25% {
-		transform: scale(2);
-	}
-
-	45% {
-		left: 62.5%;
-		bottom: 50%;
-		transform: scale(2);
-	}
-
-	65% {
-		left: 54.5%;
-		bottom: 52%;
-		transform: scale(2);
-	}
-
-	85% {
-		left: 54%;
-		bottom: 52%;
-		transform scale(0.5);
-	}
-
-	100% {
-		left: 54%;
-		bottom: 52%;
-		transform scale(0.5);
-	}
 `;
 
 const Content = styled.div`
@@ -132,11 +102,12 @@ const HighlightText = styled.span`
 
 const StyledLogoLink = styled.div`
 	display: block;
-	width: 200px;
+	width: 180px;
 	margin: 0 auto;
-	padding-top: 60px;
+	padding-top: 70px;
 
 	@media (min-width: 768px) {
+		width: 200px;
 		padding-top: 85px;
 	}
 `;
@@ -166,6 +137,9 @@ const Coin = styled.div`
 		width: 60px;
 		height: 80px;
 	}
+
+	position: relative;
+	z-index: 2;
 `;
 
 const StyledTimeline = styled.div`
