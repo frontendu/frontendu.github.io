@@ -10,6 +10,7 @@ import {
 import {Timeline} from 'react-twitter-widgets';
 import SocialLinks from '../components/patrials/social-links';
 import {postponeLoadFont} from '../lib/font-loading';
+import {executeCommand} from '../services/metrika';
 
 import '../index.css';
 
@@ -152,7 +153,8 @@ class Landing extends React.Component {
 		postponeLoadFont();
 	}
 
-	onLogoClick() {
+	onLogoClick({trackingId}) {
+		executeCommand(trackingId, 'reachGoal', 'CHRISTMAS_BALL_CLICKED');
 		this.audio && this.audio.play();
 	}
 
@@ -164,6 +166,7 @@ class Landing extends React.Component {
 						site {
 							siteMetadata {
 								title
+								trackingId
 							}
 						}
 					}
@@ -180,7 +183,10 @@ class Landing extends React.Component {
 					</Helmet>
 					<Hero>
 						<audio src="yoyoyo.ogg" ref={audio => this.audio = audio} />
-						<LogoWrapper onClick={() => this.onLogoClick()} title="Счастливого Нового Года!">
+						<LogoWrapper
+							onClick={() => this.onLogoClick({trackingId: data.site.siteMetadata.trackingId})} 
+							title="Счастливого Нового Года!"
+						>
 							<ChristmasBall />
 							<StyledLogoLink>
 								<Logo src={logo} />
