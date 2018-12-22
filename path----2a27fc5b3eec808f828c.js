@@ -1,2 +1,0 @@
-webpackJsonp([60335399758886],{150:function(t,a){t.exports={data:{site:{siteMetadata:{title:"Фронтенд Юность"}}},layoutContext:{}}},151:function(t,a){t.exports={data:{site:{siteMetadata:{title:"Фронтенд Юность"}}},layoutContext:{}}}});
-//# sourceMappingURL=path----2a27fc5b3eec808f828c.js.map
