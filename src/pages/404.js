@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+import BaseLayout from '../components/base';
 
 const Content = styled.div`
 	text-align: center;
@@ -29,10 +30,12 @@ const DescriptionText = styled.p`
 `;
 
 const NotFoundPage = () => (
-	<Content>
-		<HighlightText>Йо, йо, йо,</HighlightText>
-		<DescriptionText>Это самая не найденная страница на свете!</DescriptionText>
-	</Content>
+	<BaseLayout>
+		<Content>
+			<HighlightText>Йо, йо, йо,</HighlightText>
+			<DescriptionText>Это самая не найденная страница на свете!</DescriptionText>
+		</Content>
+	</BaseLayout>
 )
 
 export default NotFoundPage
