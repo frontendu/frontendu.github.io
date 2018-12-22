@@ -13,10 +13,12 @@ import {postponeLoadFont} from '../lib/font-loading';
 
 import '../index.css';
 
+import ball from '../assets/ball.png'
 import logo from '../assets/logo.svg';
 import coin from '../assets/coin.svg';
 
-const LogoWrapper = styled.div`
+const LogoWrapper = styled(Link)`
+	display: block;
 	position: relative;
 	margin: 0 auto;
 	width: 320px;
@@ -32,6 +34,17 @@ const Logo = styled.img`
 	width: 100%;
 	box-sizing: border-box;
 	padding: 20px;
+`;
+
+const ChristmasBall = styled.div`
+	background-image: url(${ball});
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-size: contain;
+	z-index: 1000;
+	opacity: 0.8;
 `;
 
 const AnimationBall = keyframes`
@@ -61,27 +74,6 @@ const AnimationBall = keyframes`
 		left: 54%;
 		bottom: 52%;
 		transform scale(0.5);
-	}
-`;
-
-const CoctailBall = styled.div`
-	animation-name: ${AnimationBall};
-	animation-duration: 2s;
-	animation-delay: 1s;
-	animation-iteration-count: infinite;
-	animation-timing-function: ease-in-out;
-	left: 66%;
-	bottom: 37%;
-	width: 5px;
-	height: 5px;
-	transform: scale(0.5);
-	background-color: black;
-	border-radius: 20px;
-	position: absolute;
-
-	@media (min-width: 768px) {
-		width: 8px;
-		height: 8px;
 	}
 `;
 
@@ -138,8 +130,15 @@ const HighlightText = styled.span`
 	padding: 5px;
 `;
 
-const StyledLogoLink = styled(Link)`
+const StyledLogoLink = styled.div`
 	display: block;
+	width: 200px;
+	margin: 0 auto;
+	padding-top: 60px;
+
+	@media (min-width: 768px) {
+		padding-top: 85px;
+	}
 `;
 
 const StyledDonateLink = styled(Link)`
@@ -202,10 +201,10 @@ class Landing extends React.Component {
 						<link rel="shortcut icon" href="/favicon.ico" />
 					</Helmet>
 					<Hero>
-						<LogoWrapper>
-							<StyledLogoLink to="/">
+						<LogoWrapper to="/">
+							<ChristmasBall />
+							<StyledLogoLink>
 								<Logo src={logo} />
-								<CoctailBall />
 							</StyledLogoLink>
 						</LogoWrapper>
 						<TeamName>Фронтенд Юность</TeamName>
