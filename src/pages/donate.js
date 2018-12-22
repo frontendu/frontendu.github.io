@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components';
+import {graphql, StaticQuery} from 'gatsby';
 
+import BaseLayout from '../components/base';
 import {executeCommand} from '../services/metrika';
 
 // ## Emoji
@@ -235,6 +237,28 @@ class Donate extends React.Component {
 		}
 	}
 
+	componentDidMount() {
+		executeCommand(
+			this.props.trackingId,
+			'reachGoal',
+			'DONATE_PAGE_SHOWN'
+		);
+	}
+
+	onSubmit({
+		paymentType,
+		trackingId
+	}) {
+		executeCommand(
+			trackingId,
+			'reachGoal',
+			'DONATE_SUBMIT',
+			{
+				paymentType
+			}
+		);
+	}
+
 	submitDisabled() {
 		const {sum} = this.state;
 		return isNaN(sum) || sum < 100 || sum > 15000;
@@ -258,17 +282,21 @@ class Donate extends React.Component {
 
 	render() {
 		const {
-			onDonate = () => void 0
+			trackingId
 		} = this.props;
-
 		const {
 			paymentType,
 			sum,
 			comment
 		} = this.state;
+
 		return (
 			<StyledDonateForm>
-				<form method="POST" action="https://money.yandex.ru/quickpay/confirm.xml">
+				<form
+					method="POST"
+					action="https://money.yandex.ru/quickpay/confirm.xml"
+					onSubmit={() => this.onSubmit({paymentType, trackingId})}
+				>
 					<FormRow>
 						<FormLabel>Сумма:</FormLabel>
 						<StyledInput
@@ -300,12 +328,7 @@ class Donate extends React.Component {
 					</CenteredFormRow>
 					<FormRow>
 						<FormLabel />
-						<StyledSubmit
-							disabled={this.submitDisabled()}
-							onClick={() => onDonate({
-								paymentType
-							})}
-						>
+						<StyledSubmit disabled={this.submitDisabled()}>
 							<EmojiSum sum={sum} />
 							Отправить
 						</StyledSubmit>
@@ -326,53 +349,37 @@ class Donate extends React.Component {
 }
 
 class DonatePage extends React.Component {
-	componentDidMount() {
-		executeCommand(
-			this.props.data.site.siteMetadata.trackingId,
-			'reachGoal',
-			'DONATE_PAGE_SHOWN'
-		);
-	}
-
-	onDonate({
-		paymentType
-	}) {
-		executeCommand(
-			this.props.data.site.siteMetadata.trackingId,
-			'reachGoal',
-			'DONATE_SUBMIT',
-			{
-				paymentType
-			}
-		);
-	}
-
 	render() {
 		return (
-			<Content>
-				<Motivation>
-					Йо, йо, йо! Это <HighlightText>Фронтенд&nbsp;Юность</HighlightText>! Нравится наш проект? Закинь нам баблишка, братишка!
-				</Motivation>
-				<Patreon
-					href="https://www.patreon.com/frontend_u?utm_source=youknow.st&utm_campaign=donate_page"
-					target="_blank"
-				>
-					Подпишись на наш патреон и жди эксклюзивов!
-				</Patreon>
-				<Donate onDonate={(props) => this.onDonate(props)} />
-			</Content>
+			<StaticQuery
+				query={graphql`
+					query DonatePageQuery {
+						site {
+							siteMetadata {
+								trackingId
+							}
+						}
+					}
+				`}
+				render={(data) =>
+					<BaseLayout>
+						<Content>
+							<Motivation>
+								Йо, йо, йо! Это <HighlightText>Фронтенд&nbsp;Юность</HighlightText>! Нравится наш проект? Закинь нам баблишка, братишка!
+							</Motivation>
+							<Patreon
+								href="https://www.patreon.com/frontend_u?utm_source=youknow.st&utm_campaign=donate_page"
+								target="_blank"
+							>
+								Подпишись на наш патреон и жди эксклюзивов!
+							</Patreon>
+							<Donate onDonate={(props) => this.onDonate({...props, trackingId: data.site.siteMetadata.trackingId})} />
+						</Content>
+					</BaseLayout>
+				}
+			/>
 		);
 	}
 }
 
 export default DonatePage;
-
-export const query = graphql`
-	query DonatePageQuery {
-		site {
-			siteMetadata {
-				trackingId
-			}
-		}
-	}
-`;

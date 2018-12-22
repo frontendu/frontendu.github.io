@@ -8,8 +8,8 @@
 
 // Implement the Gatsby API “onCreatePage”. This is
 // called after every page is created.
-exports.onCreatePage = async ({ page, boundActionCreators }) => {
-    const { createPage } = boundActionCreators;
+exports.onCreatePage = async ({ page, actions }) => {
+    const { createPage } = actions;
 
     return new Promise((resolve) => {
         if (page.path === '/') {

@@ -2,8 +2,8 @@
 	font-family: "Fira Sans";
 	font-weight: 100, 300;
 	src:
-		url(../assets/FiraSans-Regular.woff2),
-		url(../assets/FiraSans-Regular.woff);
+		url(./assets/FiraSans-Regular.woff2),
+		url(./assets/FiraSans-Regular.woff);
 }
 
 body {
