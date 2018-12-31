@@ -28,10 +28,7 @@
   "scripts": {
     "build": "gatsby build",
     "start": "npm i && npm run develop",
-    "develop": "gatsby develop --host 0.0.0.0",
-    "deploy": "gatsby build && gh-pages -b master -d public"
+    "develop": "gatsby develop --host 0.0.0.0"
   },
-  "devDependencies": {
-    "gh-pages": "^2.0.0"
-  }
+  "devDependencies": {}
 }
