@@ -37,15 +37,6 @@ const Logo = styled.img`
 	padding: 20px;
 `;
 
-const FadeIn = keyframes`
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 0.6;
-	}
-`;
-
 const ChristmasBall = styled.div`
 	background-image: url(${ball});
 	background-repeat: no-repeat;
@@ -54,8 +45,7 @@ const ChristmasBall = styled.div`
 	position: absolute;
 	background-size: contain;
 	z-index: 1;
-	animation: 0.4s ${FadeIn};
-	animation-fill-mode: forwards;
+	opacity: 0.8;
 `;
 
 const Content = styled.div`
