@@ -17,8 +17,8 @@ import ball from '../assets/ball.png'
 import logo from '../assets/logo.svg';
 import coin from '../assets/coin.svg';
 
-const LogoWrapper = styled.div`
-	cursor: pointer;
+const LogoWrapper = styled(Link)`
+	display: block;
 	position: relative;
 	margin: 0 auto;
 	width: 320px;
@@ -178,10 +178,6 @@ class Landing extends React.Component {
 		postponeLoadFont();
 	}
 
-	onLogoClick() {
-		this.audio && this.audio.play();
-	}
-
 	render() {
 		return (
 			<StaticQuery
@@ -205,8 +201,7 @@ class Landing extends React.Component {
 						<link rel="shortcut icon" href="/favicon.ico" />
 					</Helmet>
 					<Hero>
-						<audio src="yoyoyo.ogg" ref={audio => this.audio = audio} />
-						<LogoWrapper onClick={() => this.onLogoClick()} title="Счастливого Нового Года!">
+						<LogoWrapper to="/">
 							<ChristmasBall />
 							<StyledLogoLink>
 								<Logo src={logo} />
