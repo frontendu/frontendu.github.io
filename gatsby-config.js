@@ -3,7 +3,7 @@ const trackingId = '44962126';
 module.exports = {
 	siteMetadata: {
 		trackingId,
-		title: 'Фронтенд Юность',
+		title: 'Фронтенд Молодости',
 	},
 	plugins: [
 		'gatsby-plugin-react-helmet',
