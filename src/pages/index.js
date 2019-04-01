@@ -15,8 +15,12 @@ import '../index.css';
 
 import logo from '../assets/logo.svg';
 import coin from '../assets/coin.svg';
+import php from '../assets/php.png';
 
 const LogoWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	position: relative;
 	margin: 0 auto;
 	width: 320px;
@@ -204,11 +208,10 @@ class Landing extends React.Component {
 					<Hero>
 						<LogoWrapper>
 							<StyledLogoLink to="/">
-								<Logo src={logo} />
-								<CoctailBall />
+								<Logo src={php} />
 							</StyledLogoLink>
 						</LogoWrapper>
-						<TeamName>Фронтенд Юность</TeamName>
+						<TeamName>Фронтенд Молодости</TeamName>
 						<StyledSocialLinks />
 						<Greating>
 							Самый <HighlightText>честный</HighlightText> подкаст&nbsp;о&nbsp;фронтенде!
