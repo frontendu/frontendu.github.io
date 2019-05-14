@@ -199,6 +199,7 @@ class Landing extends React.Component {
 						<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"></meta>
 						<link href="http://feeds.soundcloud.com/users/soundcloud:users:306631331/sounds.rss?token=e0ce75-1-1557845325422" rel="alternate" title="Фронтенд Юность — самый честный подкаст о фронтенде" type="application/rss+xml" />
 						<meta name="theme-color" content="#ff6666" />
+						<meta name="yandex-verification" content="91a89c4989f35709" />
 						<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
 						<link rel="shortcut icon" href="/favicon.ico" />
 					</Helmet>
