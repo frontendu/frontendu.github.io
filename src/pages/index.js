@@ -1,26 +1,22 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import styled, {keyframes} from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import {
 	graphql,
 	Link,
 	StaticQuery
 } from 'gatsby';
 
-import {Timeline} from 'react-twitter-widgets';
+import { Timeline } from 'react-twitter-widgets';
 import SocialLinks from '../components/patrials/social-links';
-import {postponeLoadFont} from '../lib/font-loading';
+import { postponeLoadFont } from '../lib/font-loading';
 
 import '../index.css';
 
 import logo from '../assets/logo.svg';
 import coin from '../assets/coin.svg';
-import php from '../assets/php.png';
 
 const LogoWrapper = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
 	position: relative;
 	margin: 0 auto;
 	width: 320px;
@@ -208,10 +204,10 @@ class Landing extends React.Component {
 					<Hero>
 						<LogoWrapper>
 							<StyledLogoLink to="/">
-								<Logo src={php} />
+								<Logo src={logo} />
 							</StyledLogoLink>
 						</LogoWrapper>
-						<TeamName>Фронтенд Молодости</TeamName>
+						<TeamName>Фронтенд Юность</TeamName>
 						<StyledSocialLinks />
 						<Greating>
 							Самый <HighlightText>честный</HighlightText> подкаст&nbsp;о&nbsp;фронтенде!
