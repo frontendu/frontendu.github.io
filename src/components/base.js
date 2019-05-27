@@ -8,7 +8,7 @@ import {
 } from 'gatsby';
 
 import SocialLinks from './patrials/social-links';
-import {postponeLoadFont} from '../lib/font-loading';
+import { postponeLoadFont } from '../lib/font-loading';
 
 import '../index.css';
 
@@ -103,7 +103,7 @@ class BaseLayout extends React.Component {
 					</Content>
 				}
 			/>
-		)
+		);
 	}
 }
 

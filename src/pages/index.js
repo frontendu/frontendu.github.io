@@ -1,6 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import {
 	graphql,
 	Link,
@@ -32,57 +32,6 @@ const Logo = styled.img`
 	width: 100%;
 	box-sizing: border-box;
 	padding: 20px;
-`;
-
-const AnimationBall = keyframes`
-	25% {
-		transform: scale(2);
-	}
-
-	45% {
-		left: 62.5%;
-		bottom: 50%;
-		transform: scale(2);
-	}
-
-	65% {
-		left: 54.5%;
-		bottom: 52%;
-		transform: scale(2);
-	}
-
-	85% {
-		left: 54%;
-		bottom: 52%;
-		transform: scale(0.5);
-	}
-
-	100% {
-		left: 54%;
-		bottom: 52%;
-		transform: scale(0.5);
-	}
-`;
-
-const CoctailBall = styled.div`
-	animation-name: ${AnimationBall};
-	animation-duration: 2s;
-	animation-delay: 1s;
-	animation-iteration-count: infinite;
-	animation-timing-function: ease-in-out;
-	left: 66%;
-	bottom: 37%;
-	width: 5px;
-	height: 5px;
-	transform: scale(0.5);
-	background-color: black;
-	border-radius: 20px;
-	position: absolute;
-
-	@media (min-width: 768px) {
-		width: 8px;
-		height: 8px;
-	}
 `;
 
 const Content = styled.div`
@@ -191,45 +140,46 @@ class Landing extends React.Component {
 						}
 					}
 				`}
-				render={(data) => <Content>
-					<Helmet>
-						<title>{data.site.siteMetadata.title}</title>
-						<meta name="description" content="Подкаст о фронтенде" />
-						<meta name="keywords" content="Фронтенд, подкаст, React, JavaScript, CSS" />
-						<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"></meta>
-						<link href="http://feeds.soundcloud.com/users/soundcloud:users:306631331/sounds.rss?token=e0ce75-1-1557845325422" rel="alternate" title="Фронтенд Юность — самый честный подкаст о фронтенде" type="application/rss+xml" />
-						<meta name="theme-color" content="#ff6666" />
-						<meta name="yandex-verification" content="91a89c4989f35709" />
-						<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
-						<link rel="shortcut icon" href="/favicon.ico" />
-					</Helmet>
-					<Hero>
-						<LogoWrapper>
-							<StyledLogoLink to="/">
-								<Logo src={logo} />
-							</StyledLogoLink>
-						</LogoWrapper>
-						<TeamName>Фронтенд Юность</TeamName>
-						<StyledSocialLinks />
-						<Greating>
-							Самый <HighlightText>честный</HighlightText> подкаст&nbsp;о&nbsp;фронтенде!
-						</Greating>
-					</Hero>
-					<StyledDonateLink tabIndex="1" to="/donate">
-						<Coin />
-					</StyledDonateLink>
-					<StyledTimeline>
-						<Timeline
-							dataSource={{
-								sourceType: 'profile',
-								screenName: 'frontend_u'
-							}}
-							options={{
-								username: 'frontend_u'
-							}}
-						/>
-					</StyledTimeline>
-				</Content>
+				render={(data) =>
+					<Content>
+						<Helmet>
+							<title>{data.site.siteMetadata.title}</title>
+							<meta name="description" content="Подкаст о фронтенде" />
+							<meta name="keywords" content="Фронтенд, подкаст, React, JavaScript, CSS" />
+							<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+							<link href="http://feeds.soundcloud.com/users/soundcloud:users:306631331/sounds.rss?token=e0ce75-1-1557845325422" rel="alternate" title="Фронтенд Юность — самый честный подкаст о фронтенде" type="application/rss+xml" />
+							<meta name="theme-color" content="#ff6666" />
+							<meta name="yandex-verification" content="91a89c4989f35709" />
+							<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+							<link rel="shortcut icon" href="/favicon.ico" />
+						</Helmet>
+						<Hero>
+							<LogoWrapper>
+								<StyledLogoLink to="/">
+									<Logo src={logo} />
+								</StyledLogoLink>
+							</LogoWrapper>
+							<TeamName>Фронтенд Юность</TeamName>
+							<StyledSocialLinks />
+							<Greating>
+								Самый <HighlightText>честный</HighlightText> подкаст&nbsp;о&nbsp;фронтенде!
+							</Greating>
+						</Hero>
+						<StyledDonateLink tabIndex="1" to="/donate">
+							<Coin />
+						</StyledDonateLink>
+						<StyledTimeline>
+							<Timeline
+								dataSource={{
+									sourceType: 'profile',
+									screenName: 'frontend_u'
+								}}
+								options={{
+									username: 'frontend_u'
+								}}
+							/>
+						</StyledTimeline>
+					</Content>
 				}
 			/>
 		);

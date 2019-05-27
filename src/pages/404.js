@@ -1,11 +1,10 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import BaseLayout from '../components/base';
 
 const Content = styled.div`
 	text-align: center;
 	box-sizing: border-box;
-	margin: 0 auto;
 	padding: 40px;
 	padding-top: 0;
 	margin: 20px auto;
@@ -36,6 +35,6 @@ const NotFoundPage = () => (
 			<DescriptionText>Это самая не найденная страница на свете!</DescriptionText>
 		</Content>
 	</BaseLayout>
-)
+);
 
-export default NotFoundPage
+export default NotFoundPage;

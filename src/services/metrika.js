@@ -1,4 +1,5 @@
 const immediatelyExecuteCommand = (method, ...args) => {
+	// eslint-disable-next-line no-undef
 	yaCounter[method](...args);
 };
 
