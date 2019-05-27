@@ -54,13 +54,13 @@ const AnimationBall = keyframes`
 	85% {
 		left: 54%;
 		bottom: 52%;
-		transform scale(0.5);
+		transform: scale(0.5);
 	}
 
 	100% {
 		left: 54%;
 		bottom: 52%;
-		transform scale(0.5);
+		transform: scale(0.5);
 	}
 `;
 

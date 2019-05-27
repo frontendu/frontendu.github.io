@@ -10,6 +10,7 @@ import youtube from '../../assets/socials/youtube.svg';
 import medium from '../../assets/socials/medium.svg';
 import patreon from '../../assets/socials/patreon.svg';
 import vk from '../../assets/socials/vk.svg';
+import github from '../../assets/socials/github.svg';
 
 const SocialLinks = styled.div`
 	justify-content: center;
@@ -117,6 +118,14 @@ const VKSocialLink = SocialLink.extend
 	background-image: url(${vk});
 `;
 
+const GithubSocialLink = SocialLink.extend
+	.attrs({
+		title: 'Github',
+		href: 'https://github.com/frontendu'
+	})`
+	background-image: url(${github});
+`;
+
 export default (props) => (
 	<SocialLinks {...props}>
 		<SoundCloudSocialLink />
@@ -128,5 +137,6 @@ export default (props) => (
 		<VKSocialLink />
 		<EmailSocialLink />
 		<MediumSocialLink />
+		<GithubSocialLink />
 	</SocialLinks>
 );
