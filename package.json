@@ -28,7 +28,23 @@
   "scripts": {
     "build": "gatsby build",
     "start": "npm i && npm run develop",
-    "develop": "gatsby develop --host 0.0.0.0"
+    "develop": "gatsby develop --host 0.0.0.0",
+    "lint": "npm run lint:js && npm run lint:styles",
+    "lint:js": "eslint src/",
+    "lint:styles": "stylelint './src/**/*.js'"
   },
-  "devDependencies": {}
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "husky": "^2.3.0",
+    "stylelint": "^10.0.1",
+    "stylelint-config-recommended": "^2.2.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.8.0"
+  }
 }

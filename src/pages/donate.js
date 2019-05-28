@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
-import {graphql, StaticQuery} from 'gatsby';
+import { graphql, StaticQuery } from 'gatsby';
 
 import BaseLayout from '../components/base';
-import {executeCommand} from '../services/metrika';
+import { executeCommand } from '../services/metrika';
 
 // ## Emoji
 import smile from '../assets/emoji/smile.svg';
@@ -17,7 +17,6 @@ import yamoney from '../assets/yamoney.png';
 
 const Content = styled.div`
 	box-sizing: border-box;
-	margin: 0 auto;
 	padding: 40px;
 	padding-top: 0;
 	margin: 20px auto;
@@ -53,12 +52,12 @@ const Emoji = styled.div`
 	display: inline-block;
 	vertical-align: bottom;
 	margin-right: 10px;
-	background-image: url(${({src}) => src});
+	background-image: url(${({ src }) => src});
 	background-position: center;
 	background-repeat: no-repeat;
 `;
 
-const getMark = ({sum}) => {
+const getMark = ({ sum }) => {
 	const int = Math.floor(sum / 1000);
 	let src = smile;
 
@@ -79,11 +78,9 @@ const getMark = ({sum}) => {
 	}
 
 	return src;
-}
+};
 
-const EmojiSum = ({sum}) => {
-	return <Emoji src={getMark({sum})} />;
-}
+const EmojiSum = ({ sum }) => <Emoji src={getMark({ sum })} />;
 
 const StyledDonateForm = styled.div`
 	display: flex;
@@ -97,7 +94,6 @@ const StyledInput = styled.input`
 	box-sizing: border-box;
 	background-color: transparent;
 	border: none;
-	text-align: left;
 	border-bottom: 1px solid black;
 	width: 100%;
 	text-align: center;
@@ -161,6 +157,7 @@ const HiddenRadioButton = styled.input
 		left: -99999px;
 	`;
 
+/* stylelint-disable */
 const PaymentTypeImage = styled.label`
 	transition: 0.5s opacity;
 	height: 100px;
@@ -176,6 +173,7 @@ const PaymentTypeImage = styled.label`
 		opacity: 1;
 	}
 `;
+/* stylelint-enable */
 
 const CardLabel = PaymentTypeImage.extend`
 	background-image: url(${card});
@@ -234,7 +232,7 @@ class Donate extends React.Component {
 			paymentType: 'PC',
 			sum: 100,
 			comment: ''
-		}
+		};
 	}
 
 	componentDidMount() {
@@ -260,12 +258,13 @@ class Donate extends React.Component {
 	}
 
 	submitDisabled() {
-		const {sum} = this.state;
+		const { sum } = this.state;
+		// eslint-disable-next-line
 		return isNaN(sum) || sum < 100 || sum > 15000;
 	}
 
 	onSumChange(e) {
-		this.setState({sum: e.target.value});
+		this.setState({ sum: e.target.value });
 	}
 
 	onCommentChange(e) {
@@ -295,7 +294,7 @@ class Donate extends React.Component {
 				<form
 					method="POST"
 					action="https://money.yandex.ru/quickpay/confirm.xml"
-					onSubmit={() => this.onSubmit({paymentType, trackingId})}
+					onSubmit={() => this.onSubmit({ paymentType, trackingId })}
 				>
 					<FormRow>
 						<FormLabel>Сумма:</FormLabel>
@@ -321,9 +320,9 @@ class Donate extends React.Component {
 						<FormLabel>Способ оплаты:</FormLabel>
 						<StyledPaymentTypes>
 							<HiddenRadioButton id="AC" name="paymentType" value="AC" />
-							<CardLabel htmlFor="AC" onClick={() => this.onPaymentTypeChange('AC')}/>
+							<CardLabel htmlFor="AC" onClick={() => this.onPaymentTypeChange('AC')} />
 							<HiddenRadioButton id="PC" name="paymentType" value="PC" />
-							<YaMoneyLabel htmlFor="PC" onClick={() => this.onPaymentTypeChange('PC')}/>
+							<YaMoneyLabel htmlFor="PC" onClick={() => this.onPaymentTypeChange('PC')} />
 						</StyledPaymentTypes>
 					</CenteredFormRow>
 					<FormRow>
@@ -339,7 +338,7 @@ class Donate extends React.Component {
 					<input type="hidden" name="formcomment" value="Подкасту Фронтенд Юность" />
 					<input type="hidden" name="short-dest" value="Подкасту Фронтенд Юность" />
 					<input type="hidden" name="need-fio" value="false" />
-					<input type="hidden" name="need-email" value="false" /> 
+					<input type="hidden" name="need-email" value="false" />
 					<input type="hidden" name="need-phone" value="false" />
 					<input type="hidden" name="need-address" value="false" />
 				</form>
@@ -373,7 +372,7 @@ class DonatePage extends React.Component {
 							>
 								Подпишись на наш патреон и жди эксклюзивов!
 							</Patreon>
-							<Donate onDonate={(props) => this.onDonate({...props, trackingId: data.site.siteMetadata.trackingId})} />
+							<Donate onDonate={(props) => this.onDonate({ ...props, trackingId: data.site.siteMetadata.trackingId })} />
 						</Content>
 					</BaseLayout>
 				}
