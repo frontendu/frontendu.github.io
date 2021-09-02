@@ -70,7 +70,7 @@ export function Shuf() {
 	const [rotated, rotate] = React.useReducer((v) => !v, false);
 	const [enabled, toggle] = React.useReducer((v) => !v, false);
 	const calendarRef = React.useRef();
-	const audioRef = React.useRef(new Audio('/shuf.mp3')).current;
+	const audioRef = React.useRef();
 
 	const animate = React.useCallback(() => {
 		const [
@@ -81,7 +81,11 @@ export function Shuf() {
 			finalProp = '0px'
 		] = styles[Math.floor(Math.random() * styles.length)];
 
-		audioRef.currentTime = audioRef.duration * Math.random();
+		if (!audioRef.current) {
+			return;
+		}
+
+		audioRef.current.currentTime = audioRef.current.duration * Math.random();
 
 		setStyle({
 			...staticStyle,
@@ -91,7 +95,11 @@ export function Shuf() {
 		});
 
 		setTimeout(() => {
-			audioRef.play();
+			if (!audioRef.current) {
+				return;
+			}
+
+			audioRef.current.play();
 
 			setStyle((oldStyle) => ({
 				...oldStyle,
@@ -99,13 +107,21 @@ export function Shuf() {
 				[dynamicProp]: finalProp
 			}));
 			setTimeout(() => {
-				audioRef.pause();
+				if (!audioRef.current) {
+					return;
+				}
+
+				audioRef.current.pause();
 				setStyle((oldStyle) => ({
 					...oldStyle,
 					[dynamicProp]: dynamicValue
 				}));
 			}, 2500);
 		}, 2500);
+	}, []);
+
+	React.useEffect(() => {
+		audioRef.current = new Audio('/shuf.mp3');
 	}, []);
 
 	React.useEffect(() => {
