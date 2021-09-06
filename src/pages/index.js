@@ -9,7 +9,6 @@ import {
 
 import { Timeline } from 'react-twitter-widgets';
 import SocialLinks from '../components/patrials/social-links';
-import { Shuf } from '../components/Shuf';
 import { postponeLoadFont } from '../lib/font-loading';
 
 import '../index.css';
@@ -154,7 +153,6 @@ class Landing extends React.Component {
 							<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
 							<link rel="shortcut icon" href="/favicon.ico" />
 						</Helmet>
-						<Shuf />
 						<Hero>
 							<LogoWrapper>
 								<StyledLogoLink to="/">
