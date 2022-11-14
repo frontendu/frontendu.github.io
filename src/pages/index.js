@@ -156,7 +156,7 @@ class Landing extends React.Component {
 						<Hero>
 							<LogoWrapper>
 								<StyledLogoLink to="/">
-									<Logo src={logo} />
+									<Logo src={logo} alt="Фронтенд Юность" />
 								</StyledLogoLink>
 							</LogoWrapper>
 							<TeamName>Фронтенд Юность</TeamName>
